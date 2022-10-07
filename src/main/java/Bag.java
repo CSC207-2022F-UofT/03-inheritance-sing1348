@@ -13,6 +13,11 @@ public abstract class Bag {
      *       - an int named capacity
      *       - an array of Strings named contents
      */
+    private String color;
+    private int numberOfContents;
+    private int capacity;
+    private String[] contents;
+
 
 
 
@@ -27,7 +32,12 @@ public abstract class Bag {
      * its contents.)
      */
 
-
+    public Bag(String color, int capacity){
+        this.color = color;
+        this.numberOfContents = 0;
+        this.capacity = capacity;
+        this.contents = new String[capacity];
+    }
 
 
     /*
@@ -37,6 +47,17 @@ public abstract class Bag {
      *           - getNumberOfContents
      *           - getCapacity
      */
+    public String getColor(){
+        return color;
+    }
+
+    public int getNumberOfContents(){
+        return numberOfContents;
+    }
+
+    public int getCapacity(){
+        return capacity;
+    }
 
 
 
@@ -46,7 +67,9 @@ public abstract class Bag {
      *       color of this bag to the given color.
      */
 
-
+    public void setColor(String givenColor){
+        this.color = givenColor;
+    }
 
 
 
@@ -60,7 +83,14 @@ public abstract class Bag {
      *       This method should return true if the item was added
      *       and false otherwise.
      */
-
+    public boolean addItem(String item){
+        if (getCapacity() > getNumberOfContents()){
+            this.numberOfContents += 1;
+            return true;
+        } else{
+            return false;
+        }
+    }
 
 
 
@@ -75,6 +105,15 @@ public abstract class Bag {
      *
      * @return
      */
+    public String popItem() {
+        if (getNumberOfContents() != 0) {
+            String item = contents[contents.length - 1];
+            this.numberOfContents --;
+            return item;
+        } else{
+            return null;
+        }
+    }
 
 
 
@@ -86,7 +125,7 @@ public abstract class Bag {
      * @param n the amount to increase this Bag's capacity by
      */
     public void increaseCapacity(int n) {
-        // TODO: Implement this method.
+        this.capacity += n;
 
     }
 
