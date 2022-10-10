@@ -84,7 +84,8 @@ public abstract class Bag {
      *       and false otherwise.
      */
     public boolean addItem(String item){
-        if (getCapacity() > getNumberOfContents()){
+        if (getCapacity() > numberOfContents){
+            contents[numberOfContents] = item;
             this.numberOfContents += 1;
             return true;
         } else{
@@ -108,7 +109,8 @@ public abstract class Bag {
     public String popItem() {
         if (getNumberOfContents() != 0) {
             String item = contents[contents.length - 1];
-            this.numberOfContents --;
+            contents[numberOfContents - 1] = null;
+            numberOfContents += 1;
             return item;
         } else{
             return null;
